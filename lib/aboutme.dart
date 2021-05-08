@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import './constants.dart';
 import './widgets/terminal_window.dart';
+import 'dart:html';
 
 class Aboutme extends StatefulWidget {
   @override
