@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'components/header.dart';
+import 'aboutme.dart';
 import './constants.dart';
 
 void main() {
@@ -13,7 +14,8 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          backgroundColor: Color(0xFFF3F3F3),
+          scaffoldBackgroundColor: light_yellow,
+          backgroundColor: light_yellow,
           fontFamily: mainFont,
           textTheme: TextTheme(
               headline1: TextStyle(
@@ -48,11 +50,23 @@ class _MainPageState extends State<MainPage> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return SafeArea(
-        child: Scaffold(
-      body: Column(
-        children: [Header()],
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
+            height: 1000,
+            //  color: Theme.of(context).backgroundColor,
+            child: Column(
+              children: [
+                Header(),
+                Container(height: 600, child: Aboutme()),
+                Text('abc')
+                //Container(height: 600, child: Aboutme()),
+              ],
+            ),
+          ),
+        ),
       ),
-    ));
+    );
   }
 }
 
