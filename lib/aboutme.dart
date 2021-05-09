@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import './constants.dart';
 import './widgets/terminal_window.dart';
+import 'components/header.dart';
+
 import 'dart:html';
 
 class Aboutme extends StatefulWidget {
@@ -19,9 +21,11 @@ class _AboutmeState extends State<Aboutme>
   final aboutme = '''
 Hello visitors, welcome to my playground!
 
-Hey Hey Hey!!! My name is Joefa or you can also call me JoJo. I'm currently working full time as Data Analyst and Report Developer at Libro Credit Union.
+Currently, I'm a data analyst at Libro Credit Union. Throughout my time working at Libro I have gained expertise on data-related technologies such as SSIS, SSRS, SQL Server, and Power BI to name a few. In addition to my technical skills, I have learned how to plan my projects, write design documents, create user manuals for future references, and more. Recently, I have begun to transition my role into Python-oriented development with the use of libraries such as Pandas and Numpy. I am excited for this opportunity and I'm looking forward to learning to gain expertise.
 
-With that said, I'm also secretly obssess with tea and coffee because I'm a big sleepy head and I also managed to watch all of One Piece from epdisode 1 to the Wano Arc in 4 months.
+On a more personal note, I walking around downtown while taking street portraits about anything I find interesting. Furthermore, I like to invest in stock which inspired me to create this website to track data on the popular formula Wall Street Bets
+
+https://wallstreetbetsclients.web.app/#/
 ''';
 
   @override
@@ -57,88 +61,123 @@ With that said, I'm also secretly obssess with tea and coffee because I'm a big 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
-    return Column(
-      //padding: EdgeInsets.symmetric(horizontal: 20),
-      children: [
-        SizedBox(
-          height: 25,
-        ),
-        TerminalWindow(
-          windowTitle: Text('About Me',
-              style: TextStyle(
-                  fontFamily: mainFont,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                  wordSpacing: 5)),
-          //height: 500,
-          content: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                TypewriterAnimatedTextKit(
-                  text: ['JoJo-MacBook-Pro ~ % cat readme.dm'],
-                  textStyle: TextStyle(
-                      color: Colors.white,
-                      fontFamily: mainFont,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
-                  speed: Duration(milliseconds: 80),
-                  totalRepeatCount: 1,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                FadeTransition(
-                  opacity: _animation1,
-                  child: Text(aboutme, style: _makeTerminalTextStyle(16)),
-                ),
-                TypewriterAnimatedTextKit(
-                  text: ['', 'JoJo-MacBook-Pro ~ % cat contact_info.txt'],
-                  textStyle: _makeTerminalTextStyle(18),
-                  pause: Duration(milliseconds: 3000),
-                  speed: Duration(milliseconds: 80),
-                  totalRepeatCount: 1,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                FadeTransition(
-                  opacity: _animation2,
-                  child: Column(
-                    children: <Widget>[
-                      ContactField(
-                        contactSource: 'Resume',
-                        contactContent: 'View',
-                        url:
-                            'https://drive.google.com/file/d/1nkWEGMkJ3RTjPywPjMdzig2aFlgnAclv/view?usp=sharing',
-                        websiteName: 'googledrive',
+    double screenWidth = MediaQuery.of(context).size.width;
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Header(),
+              Expanded(
+                child: Center(
+                  child: Container(
+                      width: screenWidth,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).backgroundColor,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(30),
+                          topLeft: Radius.circular(30),
+                        ),
                       ),
-                      ContactField(
-                        contactSource: 'Email',
-                        contactContent: 'Joefahing@gmail',
-                      ),
-                      ContactField(
-                        contactSource: 'Linkedin',
-                        contactContent: 'Guan Cao',
-                        url: 'https://www.linkedin.com/in/guancao/',
-                        websiteName: 'Linkedin',
-                      ),
-                      ContactField(
-                          contactSource: 'Github',
-                          contactContent: 'Joefahing',
-                          url: 'https://github.com/Joefahing',
-                          websiteName: 'github')
-                    ],
-                  ),
-                )
-              ],
-            ),
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              width: 1000,
+                              child: ListView(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 25,
+                                  ),
+                                  TerminalWindow(
+                                    windowTitle: Text('About Me',
+                                        style: TextStyle(
+                                            fontFamily: mainFont,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18,
+                                            wordSpacing: 5)),
+                                    height: 650,
+                                    content: Padding(
+                                      padding:
+                                          const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          TypewriterAnimatedTextKit(
+                                            text: ['JoJo-MacBook-Pro ~ % cat readme.dm'],
+                                            textStyle: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: mainFont,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
+                                            speed: Duration(milliseconds: 80),
+                                            totalRepeatCount: 1,
+                                          ),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          FadeTransition(
+                                            opacity: _animation1,
+                                            child: Text(aboutme, style: _makeTerminalTextStyle(16)),
+                                          ),
+                                          TypewriterAnimatedTextKit(
+                                            text: ['', 'JoJo-MacBook-Pro ~ % cat contact_info.txt'],
+                                            textStyle: _makeTerminalTextStyle(18),
+                                            pause: Duration(milliseconds: 3000),
+                                            speed: Duration(milliseconds: 80),
+                                            totalRepeatCount: 1,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          FadeTransition(
+                                            opacity: _animation2,
+                                            child: Column(
+                                              children: <Widget>[
+                                                ContactField(
+                                                  contactSource: 'Resume',
+                                                  contactContent: 'View',
+                                                  url:
+                                                      'https://drive.google.com/file/d/1nkWEGMkJ3RTjPywPjMdzig2aFlgnAclv/view?usp=sharing',
+                                                  websiteName: 'googledrive',
+                                                ),
+                                                ContactField(
+                                                  contactSource: 'Email',
+                                                  contactContent: 'Joefahing@gmail',
+                                                ),
+                                                ContactField(
+                                                  contactSource: 'Linkedin',
+                                                  contactContent: 'Guan Cao',
+                                                  url: 'https://www.linkedin.com/in/guancao/',
+                                                  websiteName: 'Linkedin',
+                                                ),
+                                                ContactField(
+                                                    contactSource: 'Github',
+                                                    contactContent: 'Joefahing',
+                                                    url: 'https://github.com/Joefahing',
+                                                    websiteName: 'github')
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10.0),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      )),
+                ),
+              ),
+            ],
           ),
         ),
-        SizedBox(height: 10.0),
-      ],
+      ),
     );
   }
 }

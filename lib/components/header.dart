@@ -36,7 +36,9 @@ class Header extends StatelessWidget {
               children: [
                 TextButton(
                     style: TextButton.styleFrom(),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/about');
+                    },
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: smallPadding),
                       child: Text('About Me', style: Theme.of(context).textTheme.button),
@@ -46,7 +48,9 @@ class Header extends StatelessWidget {
                 ),
                 TextButton(
                     style: TextButton.styleFrom(),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/experience');
+                    },
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: smallPadding),
                       child: Text('Experience', style: Theme.of(context).textTheme.button),
